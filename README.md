@@ -1,1 +1,1 @@
-"# W folderze src nalezy utwozy� folder media. W folderze media musi znajdowa� sie plik test.mp4" 
+"# W folderze src należy utwożyć folder media. W folderze media musi znajdować się plik test.mp4" 
