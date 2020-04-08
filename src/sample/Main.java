@@ -18,7 +18,6 @@ public class Main extends Application {
     }
 //halko
     //halko2
-
     public static void main(String[] args) {
         launch(args);
     }
