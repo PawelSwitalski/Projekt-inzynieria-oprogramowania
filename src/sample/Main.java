@@ -18,6 +18,7 @@ public class Main extends Application {
         primaryStage.show();
     }
 //halko
+    //Jakiś tekst
 
     public static void main(String[] args) {
         launch(args);
