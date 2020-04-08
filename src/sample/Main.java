@@ -22,3 +22,5 @@ public class Main extends Application {
         launch(args);
     }
 }
+
+//No chej już jestem.
