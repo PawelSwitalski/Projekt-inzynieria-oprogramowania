@@ -24,4 +24,4 @@ public class Main extends Application {
 }
 //halo
 //siemanko
-//cholo ku
+//cholo
