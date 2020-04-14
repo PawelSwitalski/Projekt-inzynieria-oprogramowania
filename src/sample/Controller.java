@@ -59,12 +59,7 @@ public class Controller implements Initializable {
         //mediaPlayer.play();
 
 
-
-        setMediaView();
-
-
-        volume_slider();
-        time_slider();
+        initialVideo();
 
         /*
         // Nie dziala
@@ -75,6 +70,13 @@ public class Controller implements Initializable {
         width.bind(Bindings.selectDouble(mediaView.sceneProperty(), "width"));
         height.bind(Bindings.selectDouble(mediaView.sceneProperty(), "height"));
         */
+    }
+
+    private void initialVideo() {
+        /* Używana do ustawienia stanu poczatkowego */
+        setMediaView();
+        volume_slider();
+        time_slider();
     }
 
     private void time_slider() {
@@ -112,7 +114,7 @@ public class Controller implements Initializable {
 
     }
 
-public void wybierzPlik(ActionEvent event){
+    public void wybierzPlik(ActionEvent event){
         FileChooser fc = new FileChooser();
         // otwiera ustalony folder
        // fc.setInitialDirectory(new File("src/media/test.mp4"));
@@ -128,8 +130,11 @@ public void wybierzPlik(ActionEvent event){
         }else {
             System.out.println("File is not valid!");
         }
+        initialVideo();
 
-}
+    }
+
+
     public void play(ActionEvent event){
         /* funkcja do wlaczenia wideo */
         mediaPlayer.play();
