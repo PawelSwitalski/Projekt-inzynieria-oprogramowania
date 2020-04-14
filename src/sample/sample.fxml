@@ -15,9 +15,10 @@
          <children>
             <ScrollPane fx:id="fileList" layoutX="10.0" layoutY="11.0" prefHeight="197.0" prefWidth="246.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                <content>
-                  <TreeView prefHeight="200.0" prefWidth="250.0" />
+                  <TreeView prefHeight="267.0" prefWidth="250.0" />
                </content>
             </ScrollPane>
+            <Button fx:id="wybierzPlik" layoutX="78.0" layoutY="281.0" mnemonicParsing="false" onAction="#wybierzPlik" prefHeight="25.0" prefWidth="108.0" text="wybierz plik" />
          </children>
       </AnchorPane>
       <AnchorPane fx:id="mediaPane" layoutX="266.0" prefHeight="312.0" prefWidth="534.0" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="0.0">
@@ -37,8 +38,8 @@
             <Slider fx:id="mediaTimeSlider" layoutX="-1.0" prefHeight="14.0" prefWidth="534.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
             <Button fx:id="start" layoutX="202.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="&lt;" />
             <Button fx:id="end" layoutX="306.0" layoutY="21.0" mnemonicParsing="false" onAction="#end" text="&gt;" />
-            <Button fx:id="plus5seconds" layoutX="130.0" layoutY="22.0" mnemonicParsing="false" text="+5s" onAction="#plusFiveSeconds"/>
-            <Button fx:id="minus5seconds" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" text="-5s" onAction="#minusFiveSeconds"/>
+            <Button fx:id="plus5seconds" layoutX="130.0" layoutY="22.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
+            <Button fx:id="minus5seconds" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
          </children></AnchorPane>
    </children>
    <styleClass>
