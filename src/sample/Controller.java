@@ -11,6 +11,7 @@ import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
 
 import javafx.event.ActionEvent;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 
 import java.io.File;
@@ -37,7 +38,7 @@ public class Controller implements Initializable {
     private Button play;
     @FXML
     private Button pause;
-
+    public Button wybierzPlik;
     public Button start;
     public Button end;
     public Button plus5seconds;
@@ -111,7 +112,24 @@ public class Controller implements Initializable {
 
     }
 
+public void wybierzPlik(ActionEvent event){
+        FileChooser fc = new FileChooser();
+        // otwiera ustalony folder
+       // fc.setInitialDirectory(new File("src/media/test.mp4"));
 
+        // wybór rozszerzenia
+        fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Plik mp4", "*.mp4"));
+        File selectedFile = fc.showOpenDialog(null);
+
+        if(selectedFile != null) {
+            media = new Media(new File(selectedFile.getAbsolutePath()).toURI().toString());
+            mediaPlayer = new MediaPlayer(media);
+            mediaView.setMediaPlayer(mediaPlayer);
+        }else {
+            System.out.println("File is not valid!");
+        }
+
+}
     public void play(ActionEvent event){
         /* funkcja do wlaczenia wideo */
         mediaPlayer.play();
