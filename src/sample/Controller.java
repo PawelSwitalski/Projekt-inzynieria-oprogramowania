@@ -1,5 +1,7 @@
 package sample;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -77,6 +79,19 @@ public class Controller implements Initializable {
         setMediaView();
         volume_slider();
         time_slider();
+
+        //funkcja do wyświetlania zasad gry
+        int startTime = (int) mediaPlayer.getStartTime().toSeconds();
+        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();
+                if(currentTime-startTime==22){
+                    System.out.println("ALE CIEMNO");
+                }
+            }
+        });
+        //koniec funckji
     }
 
     private void time_slider() {
