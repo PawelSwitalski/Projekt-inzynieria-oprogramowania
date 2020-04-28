@@ -19,7 +19,6 @@ import javafx.util.Duration;
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Scanner;
 
 public class Controller implements Initializable {
     @FXML
@@ -83,30 +82,15 @@ public class Controller implements Initializable {
 
         //funkcja do wyświetlania zasad gry
         int startTime = (int) mediaPlayer.getStartTime().toSeconds();
-        try {
-            mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                Scanner scanner = new Scanner(new File ("src/media/rules.txt"));               //otwarcie pliku z zasadami
-                int ruleTime = Integer.parseInt(scanner.nextLine());                                //odczytanie czasu pierwszej zasady z pliku
-                String rule = scanner.nextLine();                                                   //odczytanie pierwszej zasady z pliku
-                @Override
-                public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                    int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();           //przekonwertowanie czasu trwania filmu na sekundy i przypisanie do zmiennej typu int
-                    if(currentTime-startTime==ruleTime){                                        //sprawdzenie czy obecny czas odtwarzania to czas, w którym należy wyświetlić zasadę
-                        System.out.println(rule);                                               //wyświetlenie zasady
-                        if(scanner.hasNext()){
-                            ruleTime=Integer.parseInt(scanner.nextLine());                       //odczytanie z pliku czasu następnej zasady
-                            rule=scanner.nextLine();                                            //odczytanie z pliku następnej zasady
-                        }
-                        else{
-                            ruleTime=0;                                                             //pozbycie się błędu wielokrotnego wyświetlania ostatniej zasady
-                            scanner.close();                                                       //zamknięcie pliku z zasadami
-                        }
-                    }
+        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+            @Override
+            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();
+                if(currentTime-startTime==22){
+                    System.out.println("ALE CIEMNO");
                 }
-            });
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            }
+        });
         //koniec funckji
     }
 
