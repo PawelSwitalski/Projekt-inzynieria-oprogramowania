@@ -2,23 +2,28 @@ package sample;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.Slider;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-import javafx.scene.media.MediaView;
+import javafx.scene.media.*;
 
 import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.File;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.TreeMap;
 
 public class Controller implements Initializable {
     @FXML
@@ -34,6 +39,8 @@ public class Controller implements Initializable {
     private AnchorPane mediaPane;
     @FXML
     private AnchorPane leftPane;
+    @FXML
+    private AnchorPane buttonPane;
 
 
     @FXML
@@ -45,6 +52,8 @@ public class Controller implements Initializable {
     public Button end;
     public Button plus5seconds;
     public Button minus5seconds;
+
+    public Button full_screen;
 
     public Slider volumeSlider;
     public Slider mediaTimeSlider;
@@ -93,6 +102,7 @@ public class Controller implements Initializable {
         });
         //koniec funckji
     }
+
 
     private void time_slider() {
         /* Funkcja steruje paskiem czasu pliku*/
@@ -199,5 +209,49 @@ public class Controller implements Initializable {
         }
 
     }
+
+
+
+    public void fullScreen(ActionEvent event){
+        /* Ustawia tryb pelnoekranowy */
+
+
+        ((Stage)mediaView.getScene().getWindow()).setFullScreen(true);
+
+
+        leftPane.setVisible(false);
+        buttonPane.setVisible(false);
+
+
+        // Ustawienie mediaPane tak by niezabieralo miejsca
+        double mediaPaneLayoutX = mediaPane.getLayoutX();
+        mediaPane.setLayoutX(0);
+        // Przesuniecie mediaView na miejsce mediaPane
+        mediaView.setX(-mediaPaneLayoutX);
+
+        System.out.println("\nbuttonPane.getLayoutX()" + buttonPane.getLayoutX() +
+                "\nbuttonPane.getLayoutY()" + buttonPane.getLayoutY() +
+                "\nbuttonPane.getScaleY()" + buttonPane.getScaleY() +
+                "\nbuttonPane.getTranslateY()" + buttonPane.getTranslateY());
+
+        buttonPane.setLayoutY(0);
+
+
+
+
+
+        // Ustawienie mediaPane i mediaView na cala rozdzielczosc
+        mediaPane.setPrefSize(mainPane.getWidth(), mainPane.getHeight());
+        mediaView.setFitHeight(mainPane.getHeight());
+        mediaView.setFitWidth(mainPane.getWidth());
+
+        System.out.println( "\nmainPane.getLayoutX()" + mainPane.getLayoutX() +
+                            "\nmainPane.getHeight()" + mainPane.getHeight() +
+                            "\nmainPane.getMaxHeight()" + mainPane.getMaxHeight() );
+
+
+    }
+
+
 
 }
