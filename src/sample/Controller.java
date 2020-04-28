@@ -92,7 +92,7 @@ public class Controller implements Initializable {
 
         //funkcja do wyświetlania zasad gry
         int startTime = (int) mediaPlayer.getStartTime().toSeconds();
-        try {
+        try { // komentarz
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
                 Scanner scanner = new Scanner(new File("src/media/rules.txt"));                 //otwarcie pliku z zasadami
                 int ruleTime = Integer.parseInt(scanner.nextLine());                                        //pobranie z pliku czasu pierwszej zasady
