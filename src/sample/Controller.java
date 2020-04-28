@@ -23,6 +23,7 @@ import java.io.File;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Controller implements Initializable {
@@ -91,15 +92,30 @@ public class Controller implements Initializable {
 
         //funkcja do wyświetlania zasad gry
         int startTime = (int) mediaPlayer.getStartTime().toSeconds();
-        mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-            @Override
-            public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
-                int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();
-                if(currentTime-startTime==22){
-                    System.out.println("ALE CIEMNO");
+        try {
+            mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+                Scanner scanner = new Scanner(new File("src/media/rules.txt"));                 //otwarcie pliku z zasadami
+                int ruleTime = Integer.parseInt(scanner.nextLine());                                        //pobranie z pliku czasu pierwszej zasady
+                String rule = scanner.nextLine();                                                           //pobranie z pliku pierwszej zasady
+                @Override
+                public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                    int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
+                    if(currentTime-startTime==ruleTime){                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
+                        System.out.println(rule);                                                       //wyświetlenie zasady
+                        if(scanner.hasNext()){                                                    //sprawdzenie czy jest następna zasada
+                            ruleTime=Integer.parseInt(scanner.nextLine());                              //pobranie z pliku czasu następnej zasady
+                            rule=scanner.nextLine();                                                    //pobranie z pliku następnej zasady
+                        }
+                        else{                                                                   //jeśli nie
+                            scanner.close();                                                            //zamknięcie pliku
+                            ruleTime=0;                                                                 //pozbycie się błędu wyświetlania kilka razy ostatniej zasady
+                        }
+                    }
                 }
-            }
-        });
+            });
+        } catch (Exception e) {                                                             //obsługa błędu w przypadku braku pliku
+            e.printStackTrace();
+        }
         //koniec funckji
     }
 

@@ -5,3 +5,7 @@
 .left-pane-color {
     -fx-background-color: #8cd3e2;
 }
+.play{
+    -fx-image: url("play.jpg");
+
+}
