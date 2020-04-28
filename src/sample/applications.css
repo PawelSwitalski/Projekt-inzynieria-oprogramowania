@@ -5,7 +5,121 @@
 .left-pane-color {
     -fx-background-color: #8cd3e2;
 }
-.play{
-    -fx-image: url("play.jpg");
 
+#mainPane{
+-fx-background-color: linear-gradient(to left,#000000,#04619F);
+
+}
+#leftPane{
+-fx-background-color: linear-gradient(to left, #04619F,#000000);
+}
+#start{
+
+ -fx-background-color:
+             linear-gradient(black,black),
+             radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+     -fx-background-radius: 6,5;
+     -fx-background-insets: 0,1;
+
+     -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+    -fx-text-fill: black;
+
+}
+#play{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#pause{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#start{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#end{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#plus5seconds{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#minus5seconds{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#wybierzPlik
+{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+
+#full_screen{
+-fx-background-color:
+            linear-gradient(black,black),
+            radial-gradient(center 50% -40%, radius 200%, #166D3B 45%, #165D3B 50%);
+    -fx-background-radius: 6,5;
+    -fx-background-insets: 0,1;
+
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1);
+   -fx-text-fill: black;
+}
+#volumeSlider{
+    -fx-background-color: linear-gradient(#166D3B,#166D3B);
+    -fx-background-radius: 50;
+    -fx-background-insets: 0;
+
+
+}
+
+#mediaTimeSlider{
+    -fx-background-color: linear-gradient(#166D3B,#166D3B);
+    -fx-background-radius: 50;
+    -fx-background-insets: 0;
+
+
+}
 }
