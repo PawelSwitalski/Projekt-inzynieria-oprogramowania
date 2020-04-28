@@ -98,8 +98,8 @@ public class Controller implements Initializable {
                             rule=scanner.nextLine();                                            //odczytanie z pliku następnej zasady
                         }
                         else{
-                            ruleTime=0;
-                            scanner.close();
+                            ruleTime=0;                                                             //pozbycie się błędu wielokrotnego wyświetlania ostatniej zasady
+                            scanner.close();                                                       //zamknięcie pliku z zasadami
                         }
                     }
                 }
