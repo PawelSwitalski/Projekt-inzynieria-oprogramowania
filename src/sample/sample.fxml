@@ -13,7 +13,7 @@
          <children>
             <AnchorPane fx:id="leftPane" minHeight="400.0" minWidth="266.0" styleClass="left-pane-color" stylesheets="@applications.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane fx:id="fileList" layoutX="10.0" layoutY="11.0" prefHeight="197.0" prefWidth="246.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                  <ScrollPane fx:id="fileList" focusTraversable="false" layoutX="10.0" layoutY="11.0" prefHeight="197.0" prefWidth="246.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                      <content>
                         <TreeView prefHeight="267.0" prefWidth="250.0" />
                      </content>
@@ -39,8 +39,8 @@
                   <Slider fx:id="mediaTimeSlider" focusTraversable="false" layoutX="-1.0" prefHeight="14.0" prefWidth="534.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
                   <Button fx:id="start" focusTraversable="false" layoutX="202.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="&lt;" />
                   <Button fx:id="end" focusTraversable="false" layoutX="306.0" layoutY="21.0" mnemonicParsing="false" onAction="#end" text="&gt;" />
-                  <Button fx:id="plus5seconds" layoutX="130.0" layoutY="22.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
-                  <Button fx:id="minus5seconds" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
+                  <Button fx:id="plus5seconds" focusTraversable="false" layoutX="130.0" layoutY="22.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
+                  <Button fx:id="minus5seconds" focusTraversable="false" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
                </children>
             </AnchorPane>
          </children>
@@ -83,6 +83,11 @@
                           <KeyCodeCombination alt="UP" code="ENTER" control="UP" meta="UP" shift="UP" shortcut="UP" />
                       </accelerator>
                   </MenuItem>
+                <MenuItem mnemonicParsing="false" onAction="#smallScene" text="tryb okienkowy">
+                    <accelerator>
+                        <KeyCodeCombination alt="UP" code="ESCAPE" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </MenuItem>
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Pomoc">

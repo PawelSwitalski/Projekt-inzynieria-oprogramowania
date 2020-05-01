@@ -5,6 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -57,7 +58,6 @@ public class Controller implements Initializable {
     public Slider mediaTimeSlider;
 
     public boolean playState;
-
 
 
     @Override
@@ -117,6 +117,16 @@ public class Controller implements Initializable {
             e.printStackTrace();
         }
         //koniec funckji
+
+
+        new SceneParameter(mainPane, mediaPane, leftPane, buttonPane, mediaView);
+    }
+
+    public void smallScene(){
+        SceneParameter.setMediaPane(mediaPane);
+        SceneParameter.setMediaView(mediaView);
+        SceneParameter.setButtonPane(buttonPane);
+        leftPane.setVisible(true);
     }
 
 
@@ -278,3 +288,4 @@ public class Controller implements Initializable {
 
 
 }
+
