@@ -12,6 +12,7 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         primaryStage.setTitle("Audio Player");
         Scene scene = new Scene(root);
+
         scene.getStylesheets().add(getClass().getResource("applications.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
@@ -22,6 +23,3 @@ public class Main extends Application {
         launch(args);
     }
 }
-//halo
-//siemanko
-//cholokjhgfd

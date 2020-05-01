@@ -5,10 +5,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.Slider;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -59,15 +56,18 @@ public class Controller implements Initializable {
     public Slider volumeSlider;
     public Slider mediaTimeSlider;
 
+    public boolean playState;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         // Sciezka do pliku
         String path = new File("src/media/test.mp4").getAbsolutePath();
         media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
+        playState = false;
         //mediaPlayer.play();
 
 
@@ -151,11 +151,8 @@ public class Controller implements Initializable {
         mediaView.setFitWidth(mainPane.getMinWidth() - leftPane.getMinWidth());
     }
 
-    public void play_pause(ActionEvent event){
 
-    }
-
-    public void wybierzPlik(ActionEvent event){
+    public void wybierzPlik(){
         FileChooser fc = new FileChooser();
         // otwiera ustalony folder
        // fc.setInitialDirectory(new File("src/media/test.mp4"));
@@ -175,7 +172,17 @@ public class Controller implements Initializable {
 
     }
 
-
+// potrzebne żeby skrót do odtwarznia działał -Mikołaj
+    public void play_pause(ActionEvent event){
+        if(playState){
+            pause(event);
+            playState=false;
+        }
+        else{
+            play(event);
+            playState=true;
+        }
+    }
     public void play(ActionEvent event){
         /* funkcja do wlaczenia wideo */
         mediaPlayer.play();
