@@ -25,6 +25,7 @@ import java.util.Scanner;
 import java.util.TreeMap;
 
 public class Controller implements Initializable {
+    String fileName;
     @FXML
     private ScrollPane fileList;
     @FXML
@@ -67,6 +68,7 @@ public class Controller implements Initializable {
         media = new Media(new File(path).toURI().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaView.setMediaPlayer(mediaPlayer);
+        fileName=path;
         playState = false;
         //mediaPlayer.play();
 
@@ -92,9 +94,10 @@ public class Controller implements Initializable {
 
         //funkcja do wyświetlania zasad gry
         int startTime = (int) mediaPlayer.getStartTime().toSeconds();
+        fileName=fileName+".txt";
         try { // komentarz
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                Scanner scanner = new Scanner(new File("src/media/rules.txt"));                 //otwarcie pliku z zasadami
+                Scanner scanner = new Scanner(new File(fileName));                 //otwarcie pliku z zasadami
                 int ruleTime = Integer.parseInt(scanner.nextLine());                                        //pobranie z pliku czasu pierwszej zasady
                 String rule = scanner.nextLine();                                                           //pobranie z pliku pierwszej zasady
                 @Override
@@ -173,13 +176,13 @@ public class Controller implements Initializable {
 
         if(selectedFile != null) {
             media = new Media(new File(selectedFile.getAbsolutePath()).toURI().toString());
+            fileName=selectedFile.getAbsolutePath();
             mediaPlayer = new MediaPlayer(media);
             mediaView.setMediaPlayer(mediaPlayer);
         }else {
             System.out.println("File is not valid!");
         }
         initialVideo();
-
     }
 
 // potrzebne żeby skrót do odtwarznia działał -Mikołaj
