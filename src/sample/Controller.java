@@ -97,8 +97,8 @@ public class Controller implements Initializable {
         fileName=fileName+".txt";
         try { // komentarz
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                Scanner scanner = new Scanner(new File(fileName));                 //otwarcie pliku z zasadami
-                int ruleTime = Integer.parseInt(scanner.nextLine());                                        //pobranie z pliku czasu pierwszej zasady
+                Scanner scanner = new Scanner(new File(fileName),"UTF-8");                 //otwarcie pliku z zasadami
+                int ruleTime = Integer.parseInt(scanner.nextLine());                                       //pobranie z pliku czasu pierwszej zasady
                 String rule = scanner.nextLine();                                                           //pobranie z pliku pierwszej zasady
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
