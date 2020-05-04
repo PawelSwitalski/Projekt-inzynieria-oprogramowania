@@ -97,17 +97,21 @@ public class Controller implements Initializable {
         fileName=fileName+".txt";
         try { // komentarz
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
-                Scanner scanner = new Scanner(new File(fileName),"UTF-8");                 //otwarcie pliku z zasadami
+                Scanner scanner = new Scanner(new File(fileName));                                          //otwarcie pliku z zasadami
                 int ruleTime = Integer.parseInt(scanner.nextLine());                                       //pobranie z pliku czasu pierwszej zasady
-                String rule = scanner.nextLine();                                                           //pobranie z pliku pierwszej zasady
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
                     if(currentTime-startTime==ruleTime){                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
-                        System.out.println(rule);                                                       //wyświetlenie zasady
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);                           //stworzenie okienka pokazującego zasadę
+                        alert.setResizable(true);
+                        alert.getDialogPane().setPrefSize(250, 100);                //ustawienie rozmiarów okienka
+                        alert.setHeaderText(null);
+                        alert.setTitle("Zasada");
+                        alert.setContentText("PIJ!");                                                    //przypisanie zasady do tekstu w okienku
+                        alert.show();                                                                   //wyświetlenie okienka
                         if(scanner.hasNext()){                                                    //sprawdzenie czy jest następna zasada
                             ruleTime=Integer.parseInt(scanner.nextLine());                              //pobranie z pliku czasu następnej zasady
-                            rule=scanner.nextLine();                                                    //pobranie z pliku następnej zasady
                         }
                         else{                                                                   //jeśli nie
                             scanner.close();                                                            //zamknięcie pliku
