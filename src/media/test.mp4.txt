@@ -1,4 +1,8 @@
 2
+toast
 8
+polskie znaki dzialają żźćńłąśę
 10
+trzeci komunikat
 22
+komunikat koncowy

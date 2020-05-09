@@ -108,7 +108,8 @@ public class Controller implements Initializable {
                         alert.getDialogPane().setPrefSize(250, 100);                //ustawienie rozmiarów okienka
                         alert.setHeaderText(null);
                         alert.setTitle("Zasada");
-                        alert.setContentText("PIJ!");                                                    //przypisanie zasady do tekstu w okienku
+                        /*alert.setContentText("PIJ!"); */                                                   //przypisanie zasady do tekstu w okienku
+                        alert.setContentText(scanner.nextLine());                               // czyta tekst z nastepnej lini i wyswietla go
                         alert.show();                                                                   //wyświetlenie okienka
                         if(scanner.hasNext()){                                                    //sprawdzenie czy jest następna zasada
                             ruleTime=Integer.parseInt(scanner.nextLine());                              //pobranie z pliku czasu następnej zasady
@@ -177,6 +178,7 @@ public class Controller implements Initializable {
         // wybór rozszerzenia
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Plik mp4", "*.mp4"));
         File selectedFile = fc.showOpenDialog(null);
+        System.out.println(selectedFile.getAbsolutePath());
 
         if(selectedFile != null) {
             media = new Media(new File(selectedFile.getAbsolutePath()).toURI().toString());
