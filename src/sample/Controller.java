@@ -1,16 +1,11 @@
 package sample;
 
+import com.sun.jdi.event.ExceptionEvent;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.*;
 
@@ -18,15 +13,17 @@ import javafx.event.ActionEvent;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import sample.powiadomienie.Notification;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
-import java.util.Map;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
-import java.util.TreeMap;
 
 public class Controller implements Initializable {
+    static Notification notification = new Notification();
     String fileName;
     @FXML
     private ScrollPane fileList;
@@ -98,22 +95,60 @@ public class Controller implements Initializable {
         int startTime = (int) mediaPlayer.getStartTime().toSeconds();
         fileName=fileName+".txt";
         try { // komentarz
-            mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
+            mediaPlayer.currentTimeProperty().addListener(new ChangeListener<>() {
                 Scanner scanner = new Scanner(new File(fileName));                                          //otwarcie pliku z zasadami
                 int ruleTime = scanner.nextInt();                                       //pobranie z pliku czasu pierwszej zasady
+                ArrayList<Integer> list = new ArrayList<>();
+
+
+
+
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
-                    if(currentTime-startTime==ruleTime){                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
-                        Notification notification = new Notification();
-                        if(scanner.hasNext()){                                                    //sprawdzenie czy jest następna zasada
-                            ruleTime=scanner.nextInt();                              //pobranie z pliku czasu następnej zasady
+
+
+
+
+                    if (currentTime - startTime == ruleTime) {                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
+                        //Notification notification = new Notification();
+
+
+                        try {
+                            list.add(currentTime+1);
+                            notification.start(new Stage());
+                        } catch (Exception e) {
                         }
-                        else{                                                                   //jeśli nie
+                        /*
+                        System.out.println("lista: ");
+                        list.forEach(System.out::print);   // Do sprawdzenia listy
+                        System.out.println();
+                        */
+                        try {
+                            notification.stage.show();
+                        } catch (Exception e){}
+
+
+
+
+                        if (scanner.hasNext()) {                                                    //sprawdzenie czy jest następna zasada
+                            ruleTime = scanner.nextInt();                              //pobranie z pliku czasu następnej zasady
+                        } else {                                                                   //jeśli nie
                             scanner.close();                                                            //zamknięcie pliku
-                            ruleTime=0;                                                                 //pozbycie się błędu wyświetlania kilka razy ostatniej zasady
+                            ruleTime = 0;                                                                 //pozbycie się błędu wyświetlania kilka razy ostatniej zasady
                         }
                     }
+
+
+                    else if (currentTime == list.get(0)) {
+                        System.out.println("Dziala");
+
+                        notification.stage.hide();
+
+
+                        list.remove(0);
+                    }
+
                 }
             });
         } catch (Exception e) {                                                             //obsługa błędu w przypadku braku pliku
@@ -124,6 +159,7 @@ public class Controller implements Initializable {
 
         new SceneParameter(mainPane, mediaPane, leftPane, buttonPane, mediaView);
     }
+
 
     public void smallScene(){
         SceneParameter.setMediaPane(mediaPane);
