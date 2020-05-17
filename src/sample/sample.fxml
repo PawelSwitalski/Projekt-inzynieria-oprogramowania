@@ -1,108 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.String?>
-<?import javafx.geometry.Rectangle2D?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TreeView?>
-<?import javafx.scene.input.KeyCodeCombination?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.media.MediaView?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.input.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.*?>
 
-<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
-    <center>
-        <AnchorPane fx:id="mainPane" minHeight="400.0" minWidth="800.0" stylesheets="@applications.css">
-            <children>
-                <AnchorPane fx:id="leftPane" minHeight="400.0" minWidth="266.0" styleClass="left-pane-color" stylesheets="@applications.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <children>
-                        <ScrollPane fx:id="fileList" focusTraversable="false" layoutX="10.0" layoutY="11.0" prefHeight="197.0" prefWidth="246.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                            <content>
-                                <TreeView prefHeight="267.0" prefWidth="250.0" />
-                            </content>
-                        </ScrollPane>
-                        <Button fx:id="wybierzPlik" focusTraversable="false" layoutX="78.0" layoutY="281.0" mnemonicParsing="false" onAction="#wybierzPlik" prefHeight="25.0" prefWidth="108.0" text="wybierz plik" />
-                        <Button fx:id="full_screen" focusTraversable="false" layoutX="89.0" layoutY="355.0" mnemonicParsing="true" onAction="#fullScreen" text="full screen" />
-                    </children>
-                </AnchorPane>
-                <AnchorPane fx:id="mediaPane" layoutX="266.0" prefHeight="312.0" prefWidth="534.0" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="0.0">
-                    <children>
-                        <MediaView fx:id="mediaView" fitHeight="288.0" fitWidth="512.0" focusTraversable="true">
-                            <viewport>
-                                <Rectangle2D />
-                            </viewport>
-                        </MediaView>
-                    </children>
-                </AnchorPane>
-                <AnchorPane fx:id="buttonPane" layoutX="266.0" layoutY="344.0" maxHeight="66.0" prefHeight="55.0" prefWidth="534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="0.0">
-                    <children>
-                        <Button fx:id="play" focusTraversable="false" layoutX="129.0" layoutY="21.0" maxHeight="42.0" maxWidth="52.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#play" prefHeight="41.0" prefWidth="52.0" text="Play" visible="true" AnchorPane.bottomAnchor="1.0" />
-                        <Button fx:id="pause" focusTraversable="false" layoutX="129.0" layoutY="21.0" maxHeight="41.0" maxWidth="52.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="true" onAction="#pause" prefHeight="41.0" prefWidth="52.0" text="Pause" visible="false" AnchorPane.bottomAnchor="1.0" />
-                        <Slider fx:id="volumeSlider" focusTraversable="false" layoutX="380.0" layoutY="27.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-                        <Slider fx:id="mediaTimeSlider" focusTraversable="false" layoutX="-1.0" prefHeight="14.0" prefWidth="534.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
-                        <Button fx:id="start" focusTraversable="false" layoutX="23.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="&lt;" />
-                        <Button fx:id="end" focusTraversable="false" layoutX="255.0" layoutY="21.0" mnemonicParsing="false" onAction="#end" text="&gt;" />
-                        <Button fx:id="minus5seconds" focusTraversable="false" layoutX="71.0" layoutY="21.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
-                        <Button fx:id="plus5seconds" focusTraversable="false" layoutX="192.0" layoutY="21.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
-                    </children>
-                </AnchorPane>
-            </children>
-            <styleClass>
-                <String fx:value=".base-color" />
-                <String fx:value="base-color" />
-            </styleClass>
-        </AnchorPane>
-    </center>
-    <top>
-        <MenuBar BorderPane.alignment="CENTER">
-            <menus>
-                <Menu mnemonicParsing="false" text="Pliki">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#wybierzPlik" text="Wybierz Plik">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="P" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
-                        </MenuItem>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Odtwarzanie">
-                    <items>
-                        <MenuItem mnemonicParsing="false" onAction="#play_pause" text="Play">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="SPACE" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#plusFiveSeconds" text="przewin o 5 sec">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="RIGHT" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator></MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#minusFiveSeconds" text="cofnij o 5 sec">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="LEFT" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#fullScreen" text="Fullscreen">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="ENTER" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
-                        </MenuItem>
-                        <MenuItem mnemonicParsing="false" onAction="#smallScene" text="tryb okienkowy">
-                            <accelerator>
-                                <KeyCodeCombination alt="UP" code="ESCAPE" control="UP" meta="UP" shift="UP" shortcut="UP" />
-                            </accelerator>
-                        </MenuItem>
-                    </items>
-                </Menu>
-                <Menu mnemonicParsing="false" text="Pomoc">
-                    <items>
-                        <MenuItem mnemonicParsing="false" text="About" />
-                    </items>
-                </Menu>
-            </menus>
-        </MenuBar>
-    </top>
+<BorderPane xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <center>
+      <AnchorPane fx:id="mainPane" minHeight="400.0" minWidth="800.0" stylesheets="@applications.css">
+         <children>
+            <AnchorPane fx:id="leftPane" minHeight="400.0" minWidth="266.0" styleClass="left-pane-color" stylesheets="@applications.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <ScrollPane fx:id="fileList" focusTraversable="false" layoutX="10.0" layoutY="11.0" prefHeight="197.0" prefWidth="246.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                     <content>
+                        <TreeView prefHeight="267.0" prefWidth="250.0" />
+                     </content>
+                  </ScrollPane>
+                  <Button fx:id="wybierzPlik" focusTraversable="false" layoutX="78.0" layoutY="281.0" mnemonicParsing="false" onAction="#wybierzPlik" prefHeight="25.0" prefWidth="108.0" text="wybierz plik" />
+                  <Button fx:id="full_screen" focusTraversable="false" layoutX="89.0" layoutY="355.0" mnemonicParsing="true" onAction="#fullScreen" text="full screen" />
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="mediaPane" layoutX="266.0" prefHeight="312.0" prefWidth="534.0" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <MediaView fx:id="mediaView" fitHeight="288.0" fitWidth="512.0" focusTraversable="true">
+                     <viewport>
+                        <Rectangle2D />
+                     </viewport>
+                  </MediaView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="buttonPane" layoutX="266.0" layoutY="350.0" maxHeight="66.0" prefHeight="55.0" prefWidth="534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="0.0">
+               <children>
+                  <Button fx:id="play" focusTraversable="false" layoutX="242.0" layoutY="21.0" maxHeight="25.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#play" prefHeight="25.0" prefWidth="50.0" text="Play" visible="true" AnchorPane.bottomAnchor="9.0" />
+                  <Button fx:id="pause" focusTraversable="false" layoutX="241.0" layoutY="21.0" maxHeight="25.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="true" onAction="#pause" prefHeight="25.0" prefWidth="50.0" text="Pause" visible="false" AnchorPane.bottomAnchor="9.0" />
+                  <Slider fx:id="volumeSlider" focusTraversable="false" layoutX="380.0" layoutY="27.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+                  <Slider fx:id="mediaTimeSlider" focusTraversable="false" layoutX="-1.0" prefHeight="14.0" prefWidth="534.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
+                  <Button fx:id="start" focusTraversable="false" layoutX="202.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="&lt;" />
+                  <Button fx:id="end" focusTraversable="false" layoutX="306.0" layoutY="21.0" mnemonicParsing="false" onAction="#end" text="&gt;" />
+                  <Button fx:id="plus5seconds" focusTraversable="false" layoutX="130.0" layoutY="22.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
+                  <Button fx:id="minus5seconds" focusTraversable="false" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
+               </children>
+            </AnchorPane>
+         </children>
+         <styleClass>
+            <String fx:value=".base-color" />
+            <String fx:value="base-color" />
+         </styleClass>
+      </AnchorPane>
+   </center>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Pliki">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#wybierzPlik" text="Wybierz Plik">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="P" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                     </accelerator>
+                  </MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Odtwarzanie">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#play_pause" text="Play">
+                  <accelerator>
+                      <KeyCodeCombination alt="UP" code="SPACE" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  </accelerator>
+                  </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#plusFiveSeconds" text="przewin o 5 sec">
+                      <accelerator>
+                          <KeyCodeCombination alt="UP" code="RIGHT" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                      </accelerator></MenuItem>
+                <MenuItem mnemonicParsing="false" onAction="#minusFiveSeconds" text="cofnij o 5 sec">
+                    <accelerator>
+                        <KeyCodeCombination alt="UP" code="LEFT" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </MenuItem>
+                  <MenuItem mnemonicParsing="false" onAction="#fullScreen" text="Fullscreen">
+                      <accelerator>
+                          <KeyCodeCombination alt="UP" code="ENTER" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                      </accelerator>
+                  </MenuItem>
+                <MenuItem mnemonicParsing="false" onAction="#smallScene" text="tryb okienkowy">
+                    <accelerator>
+                        <KeyCodeCombination alt="UP" code="ESCAPE" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                    </accelerator>
+                </MenuItem>
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Pomoc">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
 </BorderPane>

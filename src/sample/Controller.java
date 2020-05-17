@@ -98,21 +98,20 @@ public class Controller implements Initializable {
         try { // komentarz
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<Duration>() {
                 Scanner scanner = new Scanner(new File(fileName));                                          //otwarcie pliku z zasadami
-                int ruleTime = Integer.parseInt(scanner.nextLine());                                       //pobranie z pliku czasu pierwszej zasady
+                int ruleTime = scanner.nextInt();                                       //pobranie z pliku czasu pierwszej zasady
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
                     if(currentTime-startTime==ruleTime){                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION);                           //stworzenie okienka pokazującego zasadę
-                        alert.setResizable(true);
-                        alert.getDialogPane().setPrefSize(250, 100);                //ustawienie rozmiarów okienka
-                        alert.setHeaderText(null);
-                        alert.setTitle("Zasada");
-                        /*alert.setContentText("PIJ!"); */                                                   //przypisanie zasady do tekstu w okienku
-                        alert.setContentText(scanner.nextLine());                               // czyta tekst z nastepnej lini i wyswietla go
-                        alert.show();                                                                   //wyświetlenie okienka
+                        Alert notification = new Alert(Alert.AlertType.INFORMATION);                           //stworzenie okienka pokazującego zasadę
+                        notification.setResizable(true);
+                        notification.getDialogPane().setPrefSize(250, 100);                //ustawienie rozmiarów okienka
+                        notification.setHeaderText(null);
+                        notification.setTitle("Zasada");
+                        notification.setContentText("PIJ!");                                                  //przypisanie zasady do tekstu w okienku
+                        notification.show();                                                                   //wyświetlenie okienka
                         if(scanner.hasNext()){                                                    //sprawdzenie czy jest następna zasada
-                            ruleTime=Integer.parseInt(scanner.nextLine());                              //pobranie z pliku czasu następnej zasady
+                            ruleTime=scanner.nextInt();                              //pobranie z pliku czasu następnej zasady
                         }
                         else{                                                                   //jeśli nie
                             scanner.close();                                                            //zamknięcie pliku
