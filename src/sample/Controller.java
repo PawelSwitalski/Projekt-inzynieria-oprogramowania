@@ -7,6 +7,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
@@ -103,13 +105,7 @@ public class Controller implements Initializable {
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
                     if(currentTime-startTime==ruleTime){                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
-                        Alert notification = new Alert(Alert.AlertType.INFORMATION);                           //stworzenie okienka pokazującego zasadę
-                        notification.setResizable(true);
-                        notification.getDialogPane().setPrefSize(250, 100);                //ustawienie rozmiarów okienka
-                        notification.setHeaderText(null);
-                        notification.setTitle("Zasada");
-                        notification.setContentText("PIJ!");                                                  //przypisanie zasady do tekstu w okienku
-                        notification.show();                                                                   //wyświetlenie okienka
+                        Notification notification = new Notification();
                         if(scanner.hasNext()){                                                    //sprawdzenie czy jest następna zasada
                             ruleTime=scanner.nextInt();                              //pobranie z pliku czasu następnej zasady
                         }
