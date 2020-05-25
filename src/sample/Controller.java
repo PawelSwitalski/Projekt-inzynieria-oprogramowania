@@ -1,6 +1,5 @@
 package sample;
 
-import com.sun.jdi.event.ExceptionEvent;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -23,8 +22,7 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Controller implements Initializable {
-    static Notification notification = new Notification();
-    String fileName;
+    private String fileName;
     @FXML
     private ScrollPane fileList;
     @FXML
@@ -92,45 +90,24 @@ public class Controller implements Initializable {
         time_slider();
 
         //funkcja do wyświetlania zasad gry
-        int startTime = (int) mediaPlayer.getStartTime().toSeconds();
         fileName=fileName+".txt";
-        try { // komentarz
+        try {
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<>() {
+                int startTime = (int) mediaPlayer.getStartTime().toSeconds();
+                int zasada=0;                                                                               //zmienna pomocnicza
+                int oldTime=startTime;                                                                      //zmienna pomocnicza by nie dublować powiadomień w liście
+                ArrayList<Notification> listaPowiadomien = new ArrayList<>();                   //utworzenie listy z powiadomieniami
                 Scanner scanner = new Scanner(new File(fileName));                                          //otwarcie pliku z zasadami
                 int ruleTime = scanner.nextInt();                                       //pobranie z pliku czasu pierwszej zasady
-                ArrayList<Integer> list = new ArrayList<>();
-
-
-
-
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
-
-
-
-
-                    if (currentTime - startTime == ruleTime) {                                                //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady
-                        //Notification notification = new Notification();
-
-
-                        try {
-                            list.add(currentTime+1);
-                            notification.start(new Stage());
-                        } catch (Exception e) {
-                        }
-                        /*
-                        System.out.println("lista: ");
-                        list.forEach(System.out::print);   // Do sprawdzenia listy
-                        System.out.println();
-                        */
-                        try {
-                            notification.stage.show();
-                        } catch (Exception e){}
-
-
-
-
+                    if ((currentTime - startTime == ruleTime) && oldTime!=currentTime) {                              //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady oraz czy się nie powtarza
+                        zasada++;
+                        oldTime=currentTime;                                                            //przypisanie do zmiennej pomocniczej aktualnego czasu
+                        Notification notification = new Notification(currentTime);                      //utworzenie nowego powiadomienia
+                        listaPowiadomien.add(notification);                                             //dodanie powiadomienia do listy
+                        listaPowiadomien.get(zasada-1).showNotification();                              //pokazanie powiadomienia
                         if (scanner.hasNext()) {                                                    //sprawdzenie czy jest następna zasada
                             ruleTime = scanner.nextInt();                              //pobranie z pliku czasu następnej zasady
                         } else {                                                                   //jeśli nie
@@ -138,17 +115,9 @@ public class Controller implements Initializable {
                             ruleTime = 0;                                                                 //pozbycie się błędu wyświetlania kilka razy ostatniej zasady
                         }
                     }
-
-
-                    else if (currentTime == list.get(0)) {
-                        System.out.println("Dziala");
-
-                        notification.stage.hide();
-
-
-                        list.remove(0);
+                    for(int i=0; i<listaPowiadomien.size(); i++){                                   //przejrzenie całej listy
+                        listaPowiadomien.get(i).closeNotification(currentTime);                     //zamknięcie powiadomienia
                     }
-
                 }
             });
         } catch (Exception e) {                                                             //obsługa błędu w przypadku braku pliku

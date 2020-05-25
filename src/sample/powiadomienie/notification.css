@@ -1,0 +1,25 @@
+.dialog-pane {
+    -fx-background-color: lightpink;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-font-family: 'Fira Sans';
+    -fx-font-size: 20px;
+}
+
+.dialog-pane .content.label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-fill: blue;
+}
+
+
+.dialog-pane .button {
+    -fx-text-fill: black;
+    -fx-font-family: 'Fira Sans';
+
+    -fx-background-color: transparent;
+    -fx-border-color: #4d86f1;
+    -fx-border-radius: 2px;
+    -fx-border-width: 1px;
+}
