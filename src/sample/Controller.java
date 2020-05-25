@@ -2,9 +2,13 @@ package sample;
 
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.concurrent.Task;
+import javafx.concurrent.Worker;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.*;
 
@@ -14,6 +18,7 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import sample.powiadomienie.Notification;
 
+import javax.swing.event.MouseInputListener;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -22,6 +27,9 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Controller implements Initializable {
+    @FXML
+    private MenuBar menuBar;
+
     private String fileName;
     @FXML
     private ScrollPane fileList;
@@ -58,6 +66,31 @@ public class Controller implements Initializable {
     public boolean playState;
 
 
+    /* Odpowiada za nasluchiwanie myszy */
+    // MouseInputListener mouseEvent = new PrzesuniecieMysza(buttonPane);
+    EventHandler<MouseEvent>eventHandler = new EventHandler<MouseEvent>() {
+        @Override
+        public void handle(MouseEvent mouseEvent) {
+            if (((Stage)mediaView.getScene().getWindow()).isFullScreen())
+                System.out.println("siemka pelen ekran");
+
+            else {
+                System.out.println("czesc okno");
+
+
+                // trzeba bedzie nowe stworzyć
+                double wartoscY = buttonPane.getLayoutY();
+                buttonPane.setLayoutY(SceneParameter.buttonPaneLayoutY);
+                buttonPane.setVisible(true);
+
+            }
+
+        }
+    };
+
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         // Sciezka do pliku
@@ -69,9 +102,11 @@ public class Controller implements Initializable {
         playState = false;
         //mediaPlayer.play();
 
+        // Zczytuje czy porusza sie mysz nad mediaView
+        mediaView.addEventHandler(MouseEvent.MOUSE_MOVED, eventHandler);
+
 
         initialVideo();
-
         /*
         // Nie dziala
 
