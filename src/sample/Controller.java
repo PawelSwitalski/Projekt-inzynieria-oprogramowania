@@ -25,27 +25,45 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
+
 
 public class Controller implements Initializable {
+    /* Zmienne do urytych przyciskow */
+    public Button playH;
+    public Button pauseH;
+    public Slider volumeSliderH;
+    public Slider mediaTimeSliderH;
+    public Button startH;
+    public Button endH;
+    public Button plus5secondsH;
+    public Button minus5secondsH;
     @FXML
-    private MenuBar menuBar;
+    protected AnchorPane hideButtonPane;
 
-    private String fileName;
-    @FXML
-    private ScrollPane fileList;
-    @FXML
-    private MediaView mediaView;
-    private MediaPlayer mediaPlayer;
-    private Media media;
+
+
+
 
     @FXML
-    private AnchorPane mainPane;
+    protected MenuBar menuBar;
+
+    protected String fileName;
     @FXML
-    private AnchorPane mediaPane;
+    protected ScrollPane fileList;
     @FXML
-    private AnchorPane leftPane;
+    protected MediaView mediaView;
+    protected MediaPlayer mediaPlayer;
+    protected Media media;
+
     @FXML
-    private AnchorPane buttonPane;
+    protected AnchorPane mainPane;
+    @FXML
+    protected AnchorPane mediaPane;
+    @FXML
+    protected AnchorPane leftPane;
+    @FXML
+    protected AnchorPane buttonPane;
 
 
     @FXML
@@ -65,28 +83,33 @@ public class Controller implements Initializable {
 
     public boolean playState;
 
+    private Semaphore semaphore = new Semaphore(1);
 
     /* Odpowiada za nasluchiwanie myszy */
-    // MouseInputListener mouseEvent = new PrzesuniecieMysza(buttonPane);
-    EventHandler<MouseEvent>eventHandler = new EventHandler<MouseEvent>() {
+    protected EventHandler<MouseEvent>eventHandler = new EventHandler<MouseEvent>() {
         @Override
         public void handle(MouseEvent mouseEvent) {
-            if (((Stage)mediaView.getScene().getWindow()).isFullScreen())
+
+
+            if (((Stage)mediaView.getScene().getWindow()).isFullScreen()){
                 System.out.println("siemka pelen ekran");
 
+                hideButtonPane.setVisible(true);
+
+
+            }
             else {
                 System.out.println("czesc okno");
 
+                hideButtonPane.setVisible(false);
 
-                // trzeba bedzie nowe stworzyć
-                double wartoscY = buttonPane.getLayoutY();
-                buttonPane.setLayoutY(SceneParameter.buttonPaneLayoutY);
-                buttonPane.setVisible(true);
+
 
             }
 
         }
     };
+
 
 
 
@@ -100,10 +123,8 @@ public class Controller implements Initializable {
         mediaView.setMediaPlayer(mediaPlayer);
         fileName=path;
         playState = false;
-        //mediaPlayer.play();
 
-        // Zczytuje czy porusza sie mysz nad mediaView
-        mediaView.addEventHandler(MouseEvent.MOUSE_MOVED, eventHandler);
+
 
 
         initialVideo();
@@ -124,6 +145,11 @@ public class Controller implements Initializable {
         volume_slider();
         time_slider();
 
+        // Na poczatku wylaczamy hideButtonPane
+        hideButtonPane.setVisible(false);
+        // Zczytuje czy porusza sie mysz nad mediaView
+        mainPane.addEventHandler(MouseEvent.MOUSE_MOVED, eventHandler);
+
         //funkcja do wyświetlania zasad gry
         fileName=fileName+".txt";
         try {
@@ -136,6 +162,10 @@ public class Controller implements Initializable {
                 int ruleTime = scanner.nextInt();                                       //pobranie z pliku czasu pierwszej zasady
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
+                    if (hideButtonPane.isVisible()) // Wygaszanie hideButtonPane
+                        if (!semaphore.hasQueuedThreads()) // jesli nie ma kolejki watkow
+                            new Wygaszanie(semaphore, hideButtonPane);
+
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
                     if ((currentTime - startTime == ruleTime) && oldTime!=currentTime) {                              //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady oraz czy się nie powtarza
                         zasada++;
@@ -170,6 +200,7 @@ public class Controller implements Initializable {
         SceneParameter.setMediaView(mediaView);
         SceneParameter.setButtonPane(buttonPane);
         leftPane.setVisible(true);
+        hideButtonPane.setVisible(false);
     }
 
 
@@ -180,14 +211,22 @@ public class Controller implements Initializable {
             // Ustawienie wartosci Max jako dlugosc filmu
             // Jest on dany tutaj ponieważ pasek zmienia dlugosc wraz ze zmiana wielkosci okna
             mediaTimeSlider.setMax(mediaPlayer.getTotalDuration().toSeconds());
+            // To samo co linike wyzej dla slidera pelnoekranowego
+            mediaTimeSliderH.setMax(mediaPlayer.getTotalDuration().toSeconds());
             // Przesuwanie wskaznika względem czasu filmu
             mediaTimeSlider.setValue(t1.toSeconds());
+            // To samo co linike wyzej dla slidera pelnoekranowego
+            mediaTimeSliderH.setValue(t1.toSeconds());
 
         });
 
         // Ustawienie czasu filmu poprzez klikniecie na pasek
         mediaTimeSlider.setOnMouseClicked(mouseEvent ->
                 mediaPlayer.seek(Duration.seconds(mediaTimeSlider.getValue())));
+
+        // Ustawienie czasu filmu poprzez klikniecie na pasek
+        mediaTimeSliderH.setOnMouseClicked(mouseEvent ->
+                mediaPlayer.seek(Duration.seconds(mediaTimeSliderH.getValue())));
     }
 
     private void volume_slider() {
@@ -195,6 +234,11 @@ public class Controller implements Initializable {
         *  Sprawzda ona też czy nie jest zmieniany poziom dzwieku */
         volumeSlider.setValue(mediaPlayer.getVolume() * 100);
         volumeSlider.valueProperty().addListener(observable ->
+                mediaPlayer.setVolume(volumeSlider.getValue() / 100));
+
+        // To samo dla volumeSliderH
+        volumeSliderH.setValue(mediaPlayer.getVolume() * 100);
+        volumeSliderH.valueProperty().addListener(observable ->
                 mediaPlayer.setVolume(volumeSlider.getValue() / 100));
     }
 
@@ -242,6 +286,10 @@ public class Controller implements Initializable {
         mediaPlayer.play();
         play.setVisible(false);
         pause.setVisible(true);
+
+        // dla pelnoekranowych
+        playH.setVisible(false);
+        pauseH.setVisible(true);
     }
 
     public void pause(ActionEvent event){
@@ -249,6 +297,10 @@ public class Controller implements Initializable {
         mediaPlayer.pause();
         pause.setVisible(false);
         play.setVisible(true);
+
+        // dla pelnoekranowych
+        pauseH.setVisible(false);
+        playH.setVisible(true);
     }
 
     public void start(ActionEvent event){
@@ -325,6 +377,11 @@ public class Controller implements Initializable {
         System.out.println( "\nmainPane.getLayoutX()" + mainPane.getLayoutX() +
                             "\nmainPane.getHeight()" + mainPane.getHeight() +
                             "\nmainPane.getMaxHeight()" + mainPane.getMaxHeight() );
+
+
+        // W hideButtonPane można ustawic raz szerokosc.
+        // Przy zmianie na tryb okinkowy nie trzeba sie przejmowac jak bedzie wygladal.
+        hideButtonPane.setPrefWidth(mediaView.getFitWidth());
 
 
     }
