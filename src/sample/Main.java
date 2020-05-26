@@ -16,7 +16,7 @@ public class Main extends Application {
         new KeyEsc().keyEsc(root);
 
 
-        primaryStage.setTitle("Audio Player");
+        primaryStage.setTitle("Drinker");
         Scene scene = new Scene(root);
 
         scene.getStylesheets().add(getClass().getResource("applications.css").toExternalForm());

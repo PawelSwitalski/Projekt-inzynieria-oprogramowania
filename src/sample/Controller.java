@@ -8,11 +8,15 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.*;
 
 import javafx.event.ActionEvent;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -29,6 +33,11 @@ import java.util.concurrent.Semaphore;
 
 
 public class Controller implements Initializable {
+    File glosnik = new File("src\\media\\g.jpg");
+    Image imageGlosnik = new Image(glosnik.toURI().toString());
+    public Button ONandOFFSound;
+
+
     /* Zmienne do urytych przyciskow */
     public Button playH;
     public Button pauseH;
@@ -38,6 +47,7 @@ public class Controller implements Initializable {
     public Button endH;
     public Button plus5secondsH;
     public Button minus5secondsH;
+    public TextFlow myTextFlow;
     @FXML
     protected AnchorPane hideButtonPane;
 
@@ -83,6 +93,8 @@ public class Controller implements Initializable {
 
     public boolean playState;
 
+    private double actualSoundValue;
+
     private Semaphore semaphore = new Semaphore(1);
 
     /* Odpowiada za nasluchiwanie myszy */
@@ -123,7 +135,8 @@ public class Controller implements Initializable {
         mediaView.setMediaPlayer(mediaPlayer);
         fileName=path;
         playState = false;
-
+        Text text = new Text("Witaj w aplikajci Drinker, nasza aplikacja powstała z myślą o usprawininiu popularnych drinking games. Idea jest prosta, pijesz gdy film spełnia odpowiednie ustalone wcześniej zasady. A dzięki naszemu programowi nie musisz się martwić o pamiętaniu wszystkich zasad bo zostaniesz poinformowany w odpowiednim momencie. \nProgram został stworzony przez:\n Pawła Świtalskiego,\n Bartosza Pietrzczyka,\n Mikołaja Mosonia,\n Mateusza Musiała");
+        myTextFlow.getChildren().add(text);
 
 
 
@@ -144,6 +157,9 @@ public class Controller implements Initializable {
         setMediaView();
         volume_slider();
         time_slider();
+
+        // ustawienie obrazka glosnika na przycisku
+        ONandOFFSound.setGraphic(new ImageView(imageGlosnik));
 
         // Na poczatku wylaczamy hideButtonPane
         hideButtonPane.setVisible(false);
@@ -231,7 +247,7 @@ public class Controller implements Initializable {
 
     private void volume_slider() {
         /* Funkcja ustawia zakres dzwięku od 0 do 100
-        *  Sprawzda ona też czy nie jest zmieniany poziom dzwieku */
+         *  Sprawzda ona też czy nie jest zmieniany poziom dzwieku */
         volumeSlider.setValue(mediaPlayer.getVolume() * 100);
         volumeSlider.valueProperty().addListener(observable ->
                 mediaPlayer.setVolume(volumeSlider.getValue() / 100));
@@ -252,7 +268,7 @@ public class Controller implements Initializable {
     public void wybierzPlik(){
         FileChooser fc = new FileChooser();
         // otwiera ustalony folder
-       // fc.setInitialDirectory(new File("src/media/test.mp4"));
+        // fc.setInitialDirectory(new File("src/media/test.mp4"));
 
         // wybór rozszerzenia
         fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Plik mp4", "*.mp4"));
@@ -270,7 +286,7 @@ public class Controller implements Initializable {
         initialVideo();
     }
 
-// potrzebne żeby skrót do odtwarznia działał -Mikołaj
+    // potrzebne żeby skrót do odtwarznia działał -Mikołaj
     public void play_pause(ActionEvent event){
         if(playState){
             pause(event);
@@ -375,8 +391,8 @@ public class Controller implements Initializable {
         mediaView.setFitWidth(mainPane.getWidth());
 
         System.out.println( "\nmainPane.getLayoutX()" + mainPane.getLayoutX() +
-                            "\nmainPane.getHeight()" + mainPane.getHeight() +
-                            "\nmainPane.getMaxHeight()" + mainPane.getMaxHeight() );
+                "\nmainPane.getHeight()" + mainPane.getHeight() +
+                "\nmainPane.getMaxHeight()" + mainPane.getMaxHeight() );
 
 
         // W hideButtonPane można ustawic raz szerokosc.
@@ -386,6 +402,21 @@ public class Controller implements Initializable {
 
     }
 
+
+    public void soundONandOFF(ActionEvent event) {
+        /* Funkcja odpowiada za przycisk natychmiastowego wylaczenia dzwieku */
+
+        if (mediaPlayer.getVolume() * 100 == 0)
+            mediaPlayer.setVolume(actualSoundValue);
+        else {
+            actualSoundValue = mediaPlayer.getVolume();
+            mediaPlayer.setVolume(0);
+        }
+
+        // potrzebne do zaktualizowania slider
+        volume_slider();
+
+    }
 
 
 }
