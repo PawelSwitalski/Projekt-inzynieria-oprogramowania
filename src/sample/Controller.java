@@ -12,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.media.*;
 
 import javafx.event.ActionEvent;
@@ -33,6 +34,7 @@ import java.util.concurrent.Semaphore;
 
 
 public class Controller implements Initializable {
+    public BorderPane borderPane;
     File glosnik = new File("src\\media\\g.jpg");
     Image imageGlosnik = new Image(glosnik.toURI().toString());
     public Button ONandOFFSound;
@@ -104,14 +106,14 @@ public class Controller implements Initializable {
 
 
             if (((Stage)mediaView.getScene().getWindow()).isFullScreen()){
-                System.out.println("siemka pelen ekran");
+                //System.out.println("siemka pelen ekran");
 
                 hideButtonPane.setVisible(true);
 
 
             }
             else {
-                System.out.println("czesc okno");
+                //System.out.println("czesc okno");
 
                 hideButtonPane.setVisible(false);
 
@@ -207,7 +209,7 @@ public class Controller implements Initializable {
         //koniec funckji
 
 
-        new SceneParameter(mainPane, mediaPane, leftPane, buttonPane, mediaView);
+        new SceneParameter(mainPane, mediaPane, leftPane, buttonPane, mediaView, menuBar);
     }
 
 
@@ -215,8 +217,14 @@ public class Controller implements Initializable {
         SceneParameter.setMediaPane(mediaPane);
         SceneParameter.setMediaView(mediaView);
         SceneParameter.setButtonPane(buttonPane);
+        SceneParameter.setMainPane(mainPane);
+        SceneParameter.setMenuBar(menuBar);
         leftPane.setVisible(true);
         hideButtonPane.setVisible(false);
+
+        // Do szybkiej aktualizacji mediaTimeSlider
+        soundONandOFF(new ActionEvent());
+        soundONandOFF(new ActionEvent());
     }
 
 
@@ -255,7 +263,7 @@ public class Controller implements Initializable {
         // To samo dla volumeSliderH
         volumeSliderH.setValue(mediaPlayer.getVolume() * 100);
         volumeSliderH.valueProperty().addListener(observable ->
-                mediaPlayer.setVolume(volumeSlider.getValue() / 100));
+                mediaPlayer.setVolume(volumeSliderH.getValue() / 100));
     }
 
     private void setMediaView() {
@@ -364,6 +372,14 @@ public class Controller implements Initializable {
         ((Stage)mediaView.getScene().getWindow()).setFullScreen(true);
 
 
+        menuBar.setVisible(false);
+        menuBar.setMinHeight(0);
+        menuBar.setPrefHeight(0);
+
+
+        mainPane.setStyle("-fx-background-color: black");
+
+
         leftPane.setVisible(false);
         buttonPane.setVisible(false);
 
@@ -374,31 +390,40 @@ public class Controller implements Initializable {
         // Przesuniecie mediaView na miejsce mediaPane
         mediaView.setX(-mediaPaneLayoutX);
 
+        /*
         System.out.println("\nbuttonPane.getLayoutX()" + buttonPane.getLayoutX() +
                 "\nbuttonPane.getLayoutY()" + buttonPane.getLayoutY() +
                 "\nbuttonPane.getScaleY()" + buttonPane.getScaleY() +
                 "\nbuttonPane.getTranslateY()" + buttonPane.getTranslateY());
+         */
 
         buttonPane.setLayoutY(0);
 
 
 
-
-
         // Ustawienie mediaPane i mediaView na cala rozdzielczosc
         mediaPane.setPrefSize(mainPane.getWidth(), mainPane.getHeight());
-        mediaView.setFitHeight(mainPane.getHeight());
-        mediaView.setFitWidth(mainPane.getWidth());
+        mediaView.setFitHeight(borderPane.getHeight());
+        mediaView.setFitWidth(borderPane.getWidth());
 
+
+        /*
         System.out.println( "\nmainPane.getLayoutX()" + mainPane.getLayoutX() +
                 "\nmainPane.getHeight()" + mainPane.getHeight() +
                 "\nmainPane.getMaxHeight()" + mainPane.getMaxHeight() );
+         */
 
 
         // W hideButtonPane można ustawic raz szerokosc.
         // Przy zmianie na tryb okinkowy nie trzeba sie przejmowac jak bedzie wygladal.
         hideButtonPane.setPrefWidth(mediaView.getFitWidth());
 
+        //mediaView.setY(60); // dla 16:10
+
+
+        // Do szybkiej aktualizacji mediaTimeSliderH
+        soundONandOFF(new ActionEvent());
+        soundONandOFF(new ActionEvent());
 
     }
 

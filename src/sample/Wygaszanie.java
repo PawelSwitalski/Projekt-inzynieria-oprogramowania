@@ -32,7 +32,7 @@ public class Wygaszanie implements Runnable{
         }
 
         hideButtonPane.setVisible(false);
-        System.out.println("Funkcja wygaszenieHiddenButtonPane dziala");
+        //System.out.println("Funkcja wygaszenieHiddenButtonPane dziala");
         semaphore.release();
     }
 

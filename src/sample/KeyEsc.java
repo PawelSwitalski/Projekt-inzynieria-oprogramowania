@@ -10,7 +10,7 @@ public class KeyEsc {
         final Stage stage = new Stage();
         root.setOnKeyPressed(ke -> {
             if (ke.getCode() == KeyCode.ESCAPE) {
-                System.out.println("Key Pressed: " + ke.getCode());
+                //System.out.println("Key Pressed: " + ke.getCode());
                 stage.close();
             }
         });
