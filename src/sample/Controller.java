@@ -171,13 +171,21 @@ public class Controller implements Initializable {
         //funkcja do wyświetlania zasad gry
         fileName=fileName+".txt";
         try {
+            ArrayList<Integer> notificationsTime = new ArrayList<>();                               //utworzenie listy na czasy wyświetlania zasad
+            Scanner scanner = new Scanner(new File(fileName));                                      //otwarcie pliku z zasadami
+            int i=0;                                                                                //utworzenie zmiennej pomocniczej
+            while(scanner.hasNext()){                                                               //pętla do dodawania czasów zasad do listy
+              notificationsTime.add(scanner.nextInt());
+              System.out.println(notificationsTime.get(i));
+              i++;
+            }
+            scanner.close();
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<>() {
-                int startTime = (int) mediaPlayer.getStartTime().toSeconds();
-                int zasada=0;                                                                               //zmienna pomocnicza
+                int startTime = (int) mediaPlayer.getStartTime().toSeconds();                           //ustawienie czasu początku filmu
+                int rule=0;                                                                               //zmienna pomocnicza
                 int oldTime=startTime;                                                                      //zmienna pomocnicza by nie dublować powiadomień w liście
-                ArrayList<Notification> listaPowiadomien = new ArrayList<>();                   //utworzenie listy z powiadomieniami
-                Scanner scanner = new Scanner(new File(fileName));                                          //otwarcie pliku z zasadami
-                int ruleTime = scanner.nextInt();                                       //pobranie z pliku czasu pierwszej zasady
+                ArrayList<Notification> notificationsList = new ArrayList<>();                   //utworzenie listy z powiadomieniami
+                int ruleTime = notificationsTime.get(0);                                       //pobranie z pliku czasu pierwszej zasady
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     if (hideButtonPane.isVisible()) // Wygaszanie hideButtonPane
@@ -185,21 +193,18 @@ public class Controller implements Initializable {
                             new Wygaszanie(semaphore, hideButtonPane);
 
                     int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
-                    if ((currentTime - startTime == ruleTime) && oldTime!=currentTime) {                              //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady oraz czy się nie powtarza
-                        zasada++;
-                        oldTime=currentTime;                                                            //przypisanie do zmiennej pomocniczej aktualnego czasu
-                        Notification notification = new Notification(currentTime);                      //utworzenie nowego powiadomienia
-                        listaPowiadomien.add(notification);                                             //dodanie powiadomienia do listy
-                        listaPowiadomien.get(zasada-1).showNotification();                              //pokazanie powiadomienia
-                        if (scanner.hasNext()) {                                                    //sprawdzenie czy jest następna zasada
-                            ruleTime = scanner.nextInt();                              //pobranie z pliku czasu następnej zasady
-                        } else {                                                                   //jeśli nie
-                            scanner.close();                                                            //zamknięcie pliku
-                            ruleTime = 0;                                                                 //pozbycie się błędu wyświetlania kilka razy ostatniej zasady
+                    for(Integer ruleTime:notificationsTime){                                                            //przeszukanie całej listy czasów w poszukiwaniu odpowiedniej zasady
+                        if ((currentTime - startTime == ruleTime) && oldTime!=currentTime) {                              //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady oraz czy się nie powtarza
+                            rule++;
+                            oldTime=currentTime;                                                            //przypisanie do zmiennej pomocniczej aktualnego czasu
+                            Notification notification = new Notification(currentTime);                      //utworzenie nowego powiadomienia
+                            notificationsList.add(notification);                                             //dodanie powiadomienia do listy
+                            notificationsList.get(rule-1).showNotification();                              //pokazanie powiadomienia
+                            break;
                         }
                     }
-                    for(int i=0; i<listaPowiadomien.size(); i++){                                   //przejrzenie całej listy
-                        listaPowiadomien.get(i).closeNotification(currentTime);                     //zamknięcie powiadomienia
+                    for(int i=0; i<notificationsList.size(); i++){                                   //przejrzenie całej listy
+                        notificationsList.get(i).closeNotification(currentTime);                     //zamknięcie powiadomienia
                     }
                 }
             });
