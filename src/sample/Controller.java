@@ -194,10 +194,11 @@ public class Controller implements Initializable {
                     if(currentTime==0){                                                                     //niezbędne by przy przewinięciu na początek po pierwszej zasadzie wyświetliła się ona jeszcze raz
                         oldTime=startTime;
                     }
+                    else if(currentTime<oldTime){
+                        oldTime=currentTime;
+                    }
                     for(Integer ruleTime:notificationsTime){                                                            //przeszukanie całej listy czasów w poszukiwaniu odpowiedniej zasady
                         if ((currentTime - startTime == ruleTime) && oldTime!=currentTime) {                              //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady oraz czy się nie powtarza
-                            System.out.println("Zasada: "+ruleTime);
-                            System.out.println("Obecny czas: "+currentTime);
                             rule++;
                             oldTime=currentTime;                                                            //przypisanie do zmiennej pomocniczej aktualnego czasu
                             Notification notification = new Notification(currentTime);                      //utworzenie nowego powiadomienia
