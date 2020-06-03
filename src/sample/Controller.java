@@ -173,28 +173,31 @@ public class Controller implements Initializable {
         try {
             ArrayList<Integer> notificationsTime = new ArrayList<>();                               //utworzenie listy na czasy wyświetlania zasad
             Scanner scanner = new Scanner(new File(fileName));                                      //otwarcie pliku z zasadami
-            int i=0;                                                                                //utworzenie zmiennej pomocniczej
             while(scanner.hasNext()){                                                               //pętla do dodawania czasów zasad do listy
               notificationsTime.add(scanner.nextInt());
-              System.out.println(notificationsTime.get(i));
-              i++;
             }
             scanner.close();
+            ArrayList<Notification> notificationsList = new ArrayList<>();                   //utworzenie listy z powiadomieniami
             mediaPlayer.currentTimeProperty().addListener(new ChangeListener<>() {
                 int startTime = (int) mediaPlayer.getStartTime().toSeconds();                           //ustawienie czasu początku filmu
                 int rule=0;                                                                               //zmienna pomocnicza
                 int oldTime=startTime;                                                                      //zmienna pomocnicza by nie dublować powiadomień w liście
-                ArrayList<Notification> notificationsList = new ArrayList<>();                   //utworzenie listy z powiadomieniami
-                int ruleTime = notificationsTime.get(0);                                       //pobranie z pliku czasu pierwszej zasady
+                int currentTime;
+                //int ruleTime = notificationsTime.get(0);                                       //pobranie z pliku czasu pierwszej zasady
                 @Override
                 public void changed(ObservableValue<? extends Duration> observable, Duration oldValue, Duration newValue) {
                     if (hideButtonPane.isVisible()) // Wygaszanie hideButtonPane
                         if (!semaphore.hasQueuedThreads()) // jesli nie ma kolejki watkow
                             new Wygaszanie(semaphore, hideButtonPane);
 
-                    int currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
+                    currentTime = (int) mediaPlayer.getCurrentTime().toSeconds();                   //pobranie aktualnego czasu filmu w sekundach
+                    if(currentTime==0){                                                                     //niezbędne by przy przewinięciu na początek po pierwszej zasadzie wyświetliła się ona jeszcze raz
+                        oldTime=startTime;
+                    }
                     for(Integer ruleTime:notificationsTime){                                                            //przeszukanie całej listy czasów w poszukiwaniu odpowiedniej zasady
                         if ((currentTime - startTime == ruleTime) && oldTime!=currentTime) {                              //sprawdzenie czy aktualny czas jest równy czasowi następnej zasady oraz czy się nie powtarza
+                            System.out.println("Zasada: "+ruleTime);
+                            System.out.println("Obecny czas: "+currentTime);
                             rule++;
                             oldTime=currentTime;                                                            //przypisanie do zmiennej pomocniczej aktualnego czasu
                             Notification notification = new Notification(currentTime);                      //utworzenie nowego powiadomienia
