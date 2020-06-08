@@ -6,10 +6,8 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.Slider?>
-<?import javafx.scene.control.TreeView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.input.KeyCodeCombination?>
@@ -24,13 +22,13 @@
          <children>
             <AnchorPane fx:id="leftPane" minHeight="400.0" minWidth="266.0" styleClass="left-pane-color" stylesheets="@applications.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ScrollPane fx:id="fileList" focusTraversable="false" layoutX="10.0" layoutY="11.0" prefHeight="197.0" prefWidth="246.0" AnchorPane.bottomAnchor="200.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                     <content>
-                        <TreeView prefHeight="267.0" prefWidth="250.0" />
-                     </content>
-                  </ScrollPane>
-                  <Button fx:id="wybierzPlik" focusTraversable="false" layoutX="78.0" layoutY="281.0" mnemonicParsing="false" onAction="#wybierzPlik" prefHeight="25.0" prefWidth="108.0" text="wybierz plik" />
-                  <Button fx:id="full_screen" focusTraversable="false" layoutX="89.0" layoutY="355.0" mnemonicParsing="true" onAction="#fullScreen" text="full screen" />
+                  <Button fx:id="wybierzPlik" focusTraversable="false" layoutX="67.0" layoutY="281.0" mnemonicParsing="false" onAction="#wybierzPlik" prefHeight="42.0" prefWidth="140.0" />
+                  <Button fx:id="full_screen" focusTraversable="false" layoutX="76.0" layoutY="333.0" mnemonicParsing="true" onAction="#fullScreen" />
+                  <ImageView fitHeight="243.0" fitWidth="249.0" layoutX="16.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../media/logo.png" />
+                     </image>
+                  </ImageView>
                </children>
             </AnchorPane>
             <AnchorPane fx:id="mediaPane" layoutX="266.0" prefHeight="312.0" prefWidth="534.0" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="0.0">
@@ -42,29 +40,29 @@
                   </MediaView>
                   <AnchorPane fx:id="hideButtonPane" layoutY="252.0" prefHeight="59.0" prefWidth="535.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-266.0">
                      <children>
-                        <Button fx:id="playH" focusTraversable="false" layoutX="249.0" layoutY="29.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#play" prefHeight="40.0" prefWidth="50.0" text="Play" visible="true" />
-                        <Button fx:id="pauseH" focusTraversable="false" layoutX="249.0" layoutY="29.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="true" onAction="#pause" prefHeight="40.0" prefWidth="50.0" text="Pause" visible="false" />
+                        <Button fx:id="playH" focusTraversable="false" layoutX="173.0" layoutY="29.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#play" prefHeight="40.0" prefWidth="50.0" visible="true" />
+                        <Button fx:id="pauseH" focusTraversable="false" layoutX="167.0" layoutY="28.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="true" onAction="#pause" prefHeight="40.0" prefWidth="50.0" visible="false" />
                         <Slider fx:id="volumeSliderH" focusTraversable="false" layoutX="380.0" layoutY="35.0" />
                         <Slider fx:id="mediaTimeSliderH" focusTraversable="false" layoutY="6.0" prefHeight="14.0" prefWidth="534.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                        <Button fx:id="startH" focusTraversable="false" layoutX="193.0" layoutY="30.0" mnemonicParsing="false" onAction="#start" text="&lt;" />
-                        <Button fx:id="endH" focusTraversable="false" layoutX="315.0" layoutY="30.0" mnemonicParsing="false" onAction="#end" text="&gt;" />
-                        <Button fx:id="plus5secondsH" focusTraversable="false" layoutX="122.0" layoutY="30.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
-                        <Button fx:id="minus5secondsH" focusTraversable="false" layoutX="50.0" layoutY="30.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
+                        <Button fx:id="startH" focusTraversable="false" layoutX="51.0" layoutY="27.0" mnemonicParsing="false" onAction="#start" />
+                        <Button fx:id="endH" focusTraversable="false" layoutX="288.0" layoutY="28.0" mnemonicParsing="false" onAction="#end" />
+                        <Button fx:id="plus5secondsH" focusTraversable="false" layoutX="229.0" layoutY="28.0" mnemonicParsing="false" onAction="#plusFiveSeconds" />
+                        <Button fx:id="minus5secondsH" focusTraversable="false" layoutX="109.0" layoutY="28.0" mnemonicParsing="false" onAction="#minusFiveSeconds" />
                         <Button fx:id="ONandOFFSound1" layoutX="374.0" layoutY="30.0" mnemonicParsing="false" onAction="#soundONandOFF" />
                      </children>
                   </AnchorPane>
                </children>
             </AnchorPane>
-            <AnchorPane fx:id="buttonPane" layoutX="266.0" layoutY="350.0" maxHeight="66.0" prefHeight="55.0" prefWidth="534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="0.0">
+            <AnchorPane fx:id="buttonPane" layoutX="266.0" layoutY="327.0" maxHeight="66.0" prefHeight="55.0" prefWidth="534.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="266.0" AnchorPane.rightAnchor="0.0">
                <children>
-                  <Button fx:id="play" focusTraversable="false" layoutX="249.0" layoutY="24.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#play" prefHeight="40.0" prefWidth="50.0" text="Play" visible="true" AnchorPane.bottomAnchor="5.0" />
-                  <Button fx:id="pause" focusTraversable="false" layoutX="249.0" layoutY="24.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="true" onAction="#pause" prefHeight="40.0" prefWidth="50.0" text="Pause" visible="false" AnchorPane.bottomAnchor="5.0" />
+                  <Button fx:id="play" focusTraversable="false" layoutX="146.0" layoutY="22.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="false" onAction="#play" prefHeight="46.0" prefWidth="50.0" visible="true" AnchorPane.bottomAnchor="5.0" />
+                  <Button fx:id="pause" focusTraversable="false" layoutX="146.0" layoutY="20.0" maxHeight="48.0" maxWidth="50.0" minHeight="25.0" minWidth="50.0" mnemonicParsing="true" onAction="#pause" prefHeight="45.0" prefWidth="50.0" visible="false" AnchorPane.bottomAnchor="8.0" />
                   <Slider fx:id="volumeSlider" focusTraversable="false" layoutX="380.0" layoutY="27.0" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
                   <Slider fx:id="mediaTimeSlider" focusTraversable="false" layoutX="-1.0" prefHeight="14.0" prefWidth="534.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" />
-                  <Button fx:id="start" focusTraversable="false" layoutX="202.0" layoutY="21.0" mnemonicParsing="false" onAction="#start" text="&lt;" />
-                  <Button fx:id="end" focusTraversable="false" layoutX="306.0" layoutY="21.0" mnemonicParsing="false" onAction="#end" text="&gt;" />
-                  <Button fx:id="plus5seconds" focusTraversable="false" layoutX="130.0" layoutY="22.0" mnemonicParsing="false" onAction="#plusFiveSeconds" text="+5s" />
-                  <Button fx:id="minus5seconds" focusTraversable="false" layoutX="62.0" layoutY="22.0" mnemonicParsing="false" onAction="#minusFiveSeconds" text="-5s" />
+                  <Button fx:id="start" focusTraversable="false" layoutX="26.0" layoutY="22.0" mnemonicParsing="false" onAction="#start" />
+                  <Button fx:id="end" focusTraversable="false" layoutX="258.0" layoutY="22.0" mnemonicParsing="false" onAction="#end" />
+                  <Button fx:id="plus5seconds" focusTraversable="false" layoutX="202.0" layoutY="22.0" mnemonicParsing="false" onAction="#plusFiveSeconds" />
+                  <Button fx:id="minus5seconds" focusTraversable="false" layoutX="84.0" layoutY="22.0" mnemonicParsing="false" onAction="#minusFiveSeconds" />
                   <Button fx:id="ONandOFFSound" layoutX="358.0" layoutY="31.0" mnemonicParsing="false" onAction="#soundONandOFF" />
                </children>
             </AnchorPane>

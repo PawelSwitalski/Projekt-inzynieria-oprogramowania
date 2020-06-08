@@ -37,18 +37,43 @@ public class Controller implements Initializable {
     public BorderPane borderPane;
     File glosnik = new File("src\\media\\g.jpg");
     Image imageGlosnik = new Image(glosnik.toURI().toString());
-    public Button ONandOFFSound;
-
+    public Button ONandOFFSound1;
 
     /* Zmienne do urytych przyciskow */
+    File playon = new File("src\\media\\play.jpg");
+    Image imagePlay = new Image(playon.toURI().toString());
     public Button playH;
+
+    File pauseon = new File("src\\media\\pause.jpg");
+    Image imagePause = new Image(pauseon.toURI().toString());
     public Button pauseH;
+
     public Slider volumeSliderH;
     public Slider mediaTimeSliderH;
+
+    File starton = new File("src\\media\\start.jpg");
+    Image imageStart = new Image(starton.toURI().toString());
     public Button startH;
+
+    File endon = new File("src\\media\\end.jpg");
+    Image imageEnd = new Image(endon.toURI().toString());
     public Button endH;
+
+    File pluson = new File("src\\media\\przod.jpg");
+    Image imagePlus = new Image(pluson.toURI().toString());
     public Button plus5secondsH;
+
+    File tylon = new File("src\\media\\tyl.jpg");
+    Image imageTyl = new Image(tylon.toURI().toString());
     public Button minus5secondsH;
+
+    File full = new File("src\\media\\fullscreen.jpg");
+    Image imageFull = new Image(full.toURI().toString());
+
+
+    File wybierz = new File("src\\media\\wybierzplik.jpg");
+    Image imageWybierz = new Image(wybierz.toURI().toString());
+
     public TextFlow myTextFlow;
     @FXML
     protected AnchorPane hideButtonPane;
@@ -87,7 +112,7 @@ public class Controller implements Initializable {
     public Button end;
     public Button plus5seconds;
     public Button minus5seconds;
-
+    public Button ONandOFFSound;
     public Button full_screen;
 
     public Slider volumeSlider;
@@ -162,6 +187,30 @@ public class Controller implements Initializable {
 
         // ustawienie obrazka glosnika na przycisku
         ONandOFFSound.setGraphic(new ImageView(imageGlosnik));
+        ONandOFFSound1.setGraphic(new ImageView(imageGlosnik));
+
+
+        play.setGraphic(new ImageView(imagePlay));
+        playH.setGraphic(new ImageView(imagePlay));
+
+        pause.setGraphic(new ImageView(imagePause));
+        pauseH.setGraphic(new ImageView(imagePause));
+
+        start.setGraphic(new ImageView(imageStart));
+        startH.setGraphic(new ImageView(imageStart));
+
+        end.setGraphic(new ImageView(imageEnd));
+        endH.setGraphic(new ImageView(imageEnd));
+
+        plus5seconds.setGraphic(new ImageView(imagePlus));
+        plus5secondsH.setGraphic(new ImageView(imagePlus));
+
+        minus5seconds.setGraphic(new ImageView(imageTyl));
+        minus5secondsH.setGraphic(new ImageView(imageTyl));
+
+        wybierzPlik.setGraphic(new ImageView(imageWybierz));
+
+        full_screen.setGraphic(new ImageView(imageFull));
 
         // Na poczatku wylaczamy hideButtonPane
         hideButtonPane.setVisible(false);

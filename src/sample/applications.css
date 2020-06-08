@@ -7,7 +7,7 @@
 }
 
 #mainPane{
-    -fx-background-color: linear-gradient(to left,#000000,#04619F);
+    -fx-background-color: linear-gradient(to right,#04619F, #000000);
 
 }
 #leftPane{
@@ -18,10 +18,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1em;
@@ -32,10 +32,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #start:pressed
@@ -49,10 +49,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1em;
@@ -62,11 +62,12 @@
 #play:hover
 {
 
+
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #play:pressed
@@ -80,10 +81,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1em;
@@ -94,10 +95,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #pause:pressed
@@ -111,10 +112,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+            linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+            #ffd700,
+            #b8860b,
+            radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -125,10 +126,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #start:pressed
@@ -142,10 +143,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -156,10 +157,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #end:pressed
@@ -173,10 +174,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -187,10 +188,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #plus5seconds:pressed
@@ -204,10 +205,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -218,10 +219,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #minus5seconds:pressed
@@ -236,10 +237,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -250,10 +251,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #wybierzPlik:pressed
@@ -268,10 +269,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -282,10 +283,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #full_screen:pressed
@@ -331,10 +332,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1em;
@@ -345,10 +346,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #startH:pressed
@@ -362,10 +363,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1em;
@@ -376,10 +377,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #playH:pressed
@@ -393,10 +394,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1em;
@@ -407,10 +408,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #pauseH:pressed
@@ -424,10 +425,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -438,10 +439,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #startH:pressed
@@ -455,10 +456,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -469,10 +470,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #endH:pressed
@@ -486,10 +487,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -500,10 +501,10 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #plus5secondsH:pressed
@@ -517,10 +518,10 @@
     -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
     -fx-background-radius: 8;
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100%),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%, radius 100%,#d96e3a,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
     -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
     -fx-font-weight: bold;
     -fx-font-size: 1.1em;
@@ -531,13 +532,77 @@
 {
 
     -fx-background-color:
-            linear-gradient(from 0% 93% to 0% 100%,#a34313 0%,#903b12 100),
-            #9d4024,
-            #d86e3a,
-            radial-gradient(center 50% 50%,radius 100%,#ea7f4b,#c54e2c);
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
 }
 
 #minus5secondsH:pressed
+{
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+
+}
+
+#ONandOFFSound{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
+}
+
+#ONandOFFSound:hover
+{
+
+    -fx-background-color:
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
+}
+
+#ONandOFFSound:pressed
+{
+    -fx-padding: 10 15 13 15;
+    -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
+
+}
+
+#ONandOFFSound1{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0,0 0 5 0,0 0 6 0,0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color:
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.75),4,0,0,1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
+}
+
+#ONandOFFSound1:hover
+{
+
+    -fx-background-color:
+             linear-gradient(from 0% 93% to 0% 100%,#daa520 0%,#daa520 100%),
+             #ffd700,
+             #b8860b,
+             radial-gradient(center 50% 50%, radius 100%,yellow,yellow);
+}
+
+#ONandOFFSound1:pressed
 {
     -fx-padding: 10 15 13 15;
     -fx-background-insets: 2 0 0 0,2 0 3 0,2 0 4 0,2 0 5 0;
