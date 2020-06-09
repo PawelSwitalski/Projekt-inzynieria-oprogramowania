@@ -170,10 +170,8 @@ public class Controller implements Initializable {
         initialVideo();
         /*
         // Nie dziala
-
         DoubleProperty width = mediaView.fitWidthProperty();
         DoubleProperty height = mediaView.fitHeightProperty();
-
         width.bind(Bindings.selectDouble(mediaView.sceneProperty(), "width"));
         height.bind(Bindings.selectDouble(mediaView.sceneProperty(), "height"));
         */
@@ -223,7 +221,7 @@ public class Controller implements Initializable {
             ArrayList<Integer> notificationsTime = new ArrayList<>();                               //utworzenie listy na czasy wyświetlania zasad
             Scanner scanner = new Scanner(new File(fileName));                                      //otwarcie pliku z zasadami
             while(scanner.hasNext()){                                                               //pętla do dodawania czasów zasad do listy
-              notificationsTime.add(scanner.nextInt());
+                notificationsTime.add(scanner.nextInt());
             }
             scanner.close();
             ArrayList<Notification> notificationsList = new ArrayList<>();                   //utworzenie listy z powiadomieniami
@@ -300,6 +298,9 @@ public class Controller implements Initializable {
             // To samo co linike wyzej dla slidera pelnoekranowego
             mediaTimeSliderH.setValue(t1.toSeconds());
 
+            // To trzeba dać gdzieś idziej
+            if (!((Stage)mediaView.getScene().getWindow()).isFullScreen()) // jesli mamy tryb w oknie
+                updateVideoSize();
         });
 
         // Ustawienie czasu filmu poprzez klikniecie na pasek
@@ -501,6 +502,11 @@ public class Controller implements Initializable {
 
     }
 
+    private void updateVideoSize(){
+        /* funkcja odpowiada za zmianę rozmiaru wideo w trybie okienkowym */
+        mediaView.setFitHeight(borderPane.getHeight() - 100);
+        mediaView.setFitWidth(buttonPane.getWidth());
+    }
+
 
 }
-
